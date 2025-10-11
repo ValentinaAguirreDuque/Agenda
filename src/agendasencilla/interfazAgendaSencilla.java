@@ -268,36 +268,46 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
     private void B_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AgregarActionPerformed
 
         Connection con = conectar();
-        String query = "INSERT INTO datos(id,nombres,apellidos,telefono,direccion,email) VALUES (null,'" + nombres.getText() + "','" + apellidos.getText() + "','" + telefono.getText() + "','" + direccion.getText() + "','" + email.getText() + "');";
-        try {
-            //preparo la consulta
-            PreparedStatement preparar = con.prepareStatement(query);
-            //ejecuto la consulta luego de prepararla, cuando la consulta es insert, update, delete etc, devuelve un entero con el número de filas afectadas
-            preparar.executeUpdate();
-            salida.setText("Consulta correcta");
-        } catch (SQLException ex) {
-            salida.setText("Error en la consulta");
+        if (con != null) {
+            if (!nombres.getText().isEmpty() && ! apellidos.getText().isEmpty() && ! telefono.getText().isEmpty() && ! direccion.getText().isEmpty() && !email.getText().isEmpty()) {
+                String query = "INSERT INTO datos(id,nombres,apellidos,telefono,direccion,email) VALUES (null,'" + nombres.getText() + "','" + apellidos.getText() + "','" + telefono.getText() + "','" + direccion.getText() + "','" + email.getText() + "');";
+
+                try {
+                    //preparo la consulta
+                    PreparedStatement preparar = con.prepareStatement(query);
+                    //ejecuto la consulta luego de prepararla, cuando la consulta es insert, update, delete etc, devuelve un entero con el número de filas afectadas
+                    preparar.executeUpdate();
+                    salida.setText("Consulta correcta");
+                } catch (SQLException ex) {
+                    salida.setText("Error en la consulta");
+                }
+            } else{
+                System.out.println("Los campos estan vacios. ");
+            }
+        } else {
+            System.out.println("No se pudo conectar con el servidor. ");
         }
+
     }//GEN-LAST:event_B_AgregarActionPerformed
 
     private void B_ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ConsultarActionPerformed
         //limpio la tabla antes de llevar los valores
         modelo.setRowCount(0);
-        Connection con=conectar();
-        String query="SELECT * FROM datos;";
-        try{ 
-          //preparo la consulta
-          PreparedStatement preparar=con.prepareStatement(query);
-          //ejecuto la consulta luego de prepararla, como es un select devuelve una lista de tipo ResultSet
-          ResultSet resultado = preparar.executeQuery();
-          //hago un ciclo para recorrer la lista y ponerla en la tabla de la interfaz
-          while(resultado.next()){
-              modelo.addRow(new Object[]{resultado.getInt("id"),resultado.getString("nombres"), resultado.getString("apellidos"), resultado.getString("direccion"), resultado.getString("telefono"), resultado.getString("email")});
-          }
-        }catch (SQLException ex){
-          System.out.println("Error en el sql");
-       }  
-        
+        Connection con = conectar();
+        String query = "SELECT * FROM datos;";
+        try {
+            //preparo la consulta
+            PreparedStatement preparar = con.prepareStatement(query);
+            //ejecuto la consulta luego de prepararla, como es un select devuelve una lista de tipo ResultSet
+            ResultSet resultado = preparar.executeQuery();
+            //hago un ciclo para recorrer la lista y ponerla en la tabla de la interfaz
+            while (resultado.next()) {
+                modelo.addRow(new Object[]{resultado.getInt("id"), resultado.getString("nombres"), resultado.getString("apellidos"), resultado.getString("direccion"), resultado.getString("telefono"), resultado.getString("email")});
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error en el sql");
+        }
+
     }//GEN-LAST:event_B_ConsultarActionPerformed
 
     public static void main(String args[]) {
