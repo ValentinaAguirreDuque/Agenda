@@ -16,10 +16,8 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
         Connection con = null; // Para empezar se comienza en null porque retornamos datos
         try {
             con = DriverManager.getConnection(url, usuario, contrasena); // Recibe estos parámetros
-            salida.setText("Conexión correcta"); // si lo de arriba se hizo, devuelve la salida correcta
             return con; // Retorna la conexión
         } catch (Exception e) { // Si el Try no funciona se realiza el catch
-            salida.setText("Conexión incorrecta"); // Si la conexion no se da, devuelve la salida incorrecta
             return null; // Retorna una conexion negativa cerrada
         } // Fin Try Catch
 
@@ -71,6 +69,8 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
         tabla = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         salida = new javax.swing.JTextArea();
+        B_BorrarContacto = new javax.swing.JButton();
+        B_EditarContacto = new javax.swing.JButton();
 
         L_Telefono1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         L_Telefono1.setText("Teléfono:");
@@ -162,6 +162,20 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
         salida.setRows(5);
         jScrollPane2.setViewportView(salida);
 
+        B_BorrarContacto.setText("Borrar contacto");
+        B_BorrarContacto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_BorrarContactoActionPerformed(evt);
+            }
+        });
+
+        B_EditarContacto.setText("Editar contacto");
+        B_EditarContacto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_EditarContactoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -179,7 +193,11 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(B_Agregar)
                                 .addGap(35, 35, 35)
-                                .addComponent(B_Consultar))
+                                .addComponent(B_Consultar)
+                                .addGap(29, 29, 29)
+                                .addComponent(B_BorrarContacto)
+                                .addGap(34, 34, 34)
+                                .addComponent(B_EditarContacto))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
@@ -230,7 +248,9 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(B_Agregar)
-                    .addComponent(B_Consultar))
+                    .addComponent(B_Consultar)
+                    .addComponent(B_BorrarContacto)
+                    .addComponent(B_EditarContacto))
                 .addGap(62, 62, 62)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
@@ -269,7 +289,7 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
 
         Connection con = conectar();
         if (con != null) {
-            if (!nombres.getText().isEmpty() && ! apellidos.getText().isEmpty() && ! telefono.getText().isEmpty() && ! direccion.getText().isEmpty() && !email.getText().isEmpty()) {
+            if (!nombres.getText().isEmpty() && !apellidos.getText().isEmpty() && !telefono.getText().isEmpty() && !direccion.getText().isEmpty() && !email.getText().isEmpty()) {
                 String query = "INSERT INTO datos(id,nombres,apellidos,telefono,direccion,email) VALUES (null,'" + nombres.getText() + "','" + apellidos.getText() + "','" + telefono.getText() + "','" + direccion.getText() + "','" + email.getText() + "');";
 
                 try {
@@ -281,7 +301,7 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     salida.setText("Error en la consulta");
                 }
-            } else{
+            } else {
                 System.out.println("Los campos estan vacios. ");
             }
         } else {
@@ -302,13 +322,72 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
             ResultSet resultado = preparar.executeQuery();
             //hago un ciclo para recorrer la lista y ponerla en la tabla de la interfaz
             while (resultado.next()) {
-                modelo.addRow(new Object[]{resultado.getInt("id"), resultado.getString("nombres"), resultado.getString("apellidos"), resultado.getString("direccion"), resultado.getString("telefono"), resultado.getString("email")});
+                modelo.addRow(new Object[]{resultado.getInt("id"), resultado.getString("nombres"), resultado.getString("apellidos"), resultado.getString("telefono"), resultado.getString("direccion"), resultado.getString("email")});
             }
+            salida.setText("Conexión correcta"); // si lo de arriba se hizo, devuelve la salida correcta
         } catch (SQLException ex) {
             System.out.println("Error en el sql");
         }
 
     }//GEN-LAST:event_B_ConsultarActionPerformed
+
+    private void B_BorrarContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_BorrarContactoActionPerformed
+        Connection con = conectar();
+        if (con != null) {
+            if (!telefono.getText().isEmpty()) {
+                String query = "DELETE FROM datos WHERE telefono = '" + telefono.getText() + "' ; ";
+
+                try {
+                    //preparo la consulta
+                    PreparedStatement preparar = con.prepareStatement(query);
+                    //ejecuto la consulta luego de prepararla, cuando la consulta es insert, update, delete etc, devuelve un entero con el número de filas afectadas
+                    if (preparar.executeUpdate() > 0) { // mientras el numero de filas afectadas sea mayor que 0, quiere decir que SI se realizó un cambio.
+                        salida.setText("El contacto  se borró correctamente. ");
+                    } else { // si el numero de filas afectadas es 0, quiere decir que NO se realizó un cambio.
+                        salida.setText("El teléfono ingresado no existe  ");
+                    }
+                } catch (SQLException ex) {
+                    salida.setText("Error: no se borró el contacto. ");
+                }
+            } else {
+                salida.setText("No se ha ingresado un teléfono. ");
+            }
+        } else {
+            salida.setText("No se pudo conectar con el servidor. ");
+        }
+    }//GEN-LAST:event_B_BorrarContactoActionPerformed
+
+    private void B_EditarContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_EditarContactoActionPerformed
+        Connection con = conectar();
+        if (con != null) {
+            if (!telefono.getText().isEmpty()) {
+
+                if (nombres.getText().isEmpty() || apellidos.getText().isEmpty() || telefono.getText().isEmpty() || direccion.getText().isEmpty() || email.getText().isEmpty()) {
+                    salida.setText("Los campos estan vacios o incompletos. Llene todos los campos. ");
+                } else {
+
+                    String query = "UPDATE `datos` SET nombres='" + nombres.getText() + "' , apellidos= '" + apellidos.getText() + "' , telefono= '" + telefono.getText() + "', direccion='" + direccion.getText() + "', email='" + email.getText() + "' WHERE telefono = '" + telefono.getText() + "' ; ";
+
+                    try {
+                        //preparo la consulta
+                        PreparedStatement preparar = con.prepareStatement(query);
+                        //ejecuto la consulta luego de prepararla, cuando la consulta es insert, update, delete etc, devuelve un entero con el número de filas afectadas
+                        if (preparar.executeUpdate() > 0) { // mientras el numero de filas afectadas sea mayor que 0, quiere decir que SI se realizó un cambio.
+                            salida.setText("El contacto  se actualizó correctamente. ");
+                        } else { // si el numero de filas afectadas es 0, quiere decir que NO se realizó un cambio.
+                            salida.setText("El contacto ingresado no existe  ");
+                        }
+                    } catch (SQLException ex) {
+                        salida.setText("Error: no se actualizó el contacto. ");
+                    }
+                }
+            } else {
+                salida.setText("No se ha ingresado un teléfono para actualizar un contacto. ");
+            }
+        } else {
+            salida.setText("No se pudo conectar con el servidor. ");
+        }
+    }//GEN-LAST:event_B_EditarContactoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -344,7 +423,9 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_Agregar;
+    private javax.swing.JButton B_BorrarContacto;
     private javax.swing.JButton B_Consultar;
+    private javax.swing.JButton B_EditarContacto;
     private javax.swing.JLabel L_Apellidos;
     private javax.swing.JLabel L_Dirección;
     private javax.swing.JLabel L_Dirección1;
