@@ -71,6 +71,13 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
         salida = new javax.swing.JTextArea();
         B_BorrarContacto = new javax.swing.JButton();
         B_EditarContacto = new javax.swing.JButton();
+        B_ListarCiudad = new javax.swing.JButton();
+        B_ListarRangoID = new javax.swing.JButton();
+        L_RangosID = new javax.swing.JLabel();
+        idInicial = new javax.swing.JTextField();
+        L_IdInicial1 = new javax.swing.JLabel();
+        idFinal = new javax.swing.JTextField();
+        L_IdInicial2 = new javax.swing.JLabel();
 
         L_Telefono1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         L_Telefono1.setText("Teléfono:");
@@ -176,6 +183,41 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
             }
         });
 
+        B_ListarCiudad.setText("Listar por ciudad");
+        B_ListarCiudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_ListarCiudadActionPerformed(evt);
+            }
+        });
+
+        B_ListarRangoID.setText("Listar rango ID");
+        B_ListarRangoID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_ListarRangoIDActionPerformed(evt);
+            }
+        });
+
+        L_RangosID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        L_RangosID.setText("Rangos de ID: ");
+
+        idInicial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idInicialActionPerformed(evt);
+            }
+        });
+
+        L_IdInicial1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        L_IdInicial1.setText("ID final:");
+
+        idFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idFinalActionPerformed(evt);
+            }
+        });
+
+        L_IdInicial2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        L_IdInicial2.setText("ID inicial:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -187,43 +229,57 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(B_Agregar)
-                                .addGap(35, 35, 35)
-                                .addComponent(B_Consultar)
-                                .addGap(29, 29, 29)
-                                .addComponent(B_BorrarContacto)
-                                .addGap(34, 34, 34)
-                                .addComponent(B_EditarContacto))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(L_Nombres)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(L_Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(L_Dirección)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(L_Dirección1)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(L_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(email)))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(191, 191, 191)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(B_ListarRangoID)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane1)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(L_Nombres)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(L_Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(L_Dirección)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(L_Dirección1)))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(L_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(email)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(B_Agregar)
+                                    .addGap(46, 46, 46)
+                                    .addComponent(B_Consultar)
+                                    .addGap(37, 37, 37)
+                                    .addComponent(B_BorrarContacto)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(B_EditarContacto)
+                                    .addGap(39, 39, 39)
+                                    .addComponent(B_ListarCiudad))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(L_RangosID)
+                                    .addGap(31, 31, 31)
+                                    .addComponent(L_IdInicial2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(idInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(L_IdInicial1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(idFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -231,7 +287,7 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(L_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(L_Nombres)
                     .addComponent(nombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -239,21 +295,31 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
                     .addComponent(apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(L_Telefono)
                     .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(L_Dirección)
                     .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(L_Dirección1)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(L_RangosID)
+                    .addComponent(L_IdInicial2)
+                    .addComponent(idInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(L_IdInicial1)
+                    .addComponent(idFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(B_Agregar)
                     .addComponent(B_Consultar)
                     .addComponent(B_BorrarContacto)
-                    .addComponent(B_EditarContacto))
-                .addGap(62, 62, 62)
+                    .addComponent(B_EditarContacto)
+                    .addComponent(B_ListarCiudad))
+                .addGap(11, 11, 11)
+                .addComponent(B_ListarRangoID)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
@@ -389,6 +455,94 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_B_EditarContactoActionPerformed
 
+    private void B_ListarCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ListarCiudadActionPerformed
+        Connection con = conectar();
+        modelo.setRowCount(0);
+
+        if (con != null) {
+            if (!direccion.getText().isEmpty()) {
+                if (direccion.getText().isEmpty()) {
+                    salida.setText("El campo -Direccion- está vacio. Llene el campo");
+                } else {
+                    String query = "SELECT * FROM datos WHERE direccion LIKE '%" + direccion.getText() + "%' ;";
+
+                    try {
+                        //preparo la consulta
+                        PreparedStatement preparar = con.prepareStatement(query);
+                        //ejecuto la consulta luego de prepararla, como es un select devuelve una lista de tipo ResultSet
+                        ResultSet resultado = preparar.executeQuery();
+                        //hago un ciclo para recorrer la lista y ponerla en la tabla de la interfaz
+                        boolean ciudad = false;
+                        while (resultado.next()) {
+                            modelo.addRow(new Object[]{resultado.getInt("id"), resultado.getString("nombres"), resultado.getString("apellidos"), resultado.getString("telefono"), resultado.getString("direccion"), resultado.getString("email")});
+                            ciudad = true;
+                        }
+                        if (ciudad) {
+                            salida.setText("Listado de la ciudad " + direccion.getText() + "."); // si lo de arriba se hizo, devuelve la salida correcta
+                        } else {
+                            salida.setText("No se encuentra la ciudad. ");
+                        }
+
+                    } catch (SQLException ex) {
+                        salida.setText("Error en el sql");
+                    }
+                }
+            } else {
+                salida.setText("No se ha ingresado una dirección para buscar los contactos. ");
+            }
+        } else {
+            salida.setText("No se pudo conectar con el servidor. ");
+        }
+    }//GEN-LAST:event_B_ListarCiudadActionPerformed
+
+    private void B_ListarRangoIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ListarRangoIDActionPerformed
+        Connection con = conectar();
+        modelo.setRowCount(0);
+
+        if (con != null) {
+            if (!idInicial.getText().isEmpty() || !idFinal.getText().isEmpty()) {
+                if (idInicial.getText().isEmpty() || idFinal.getText().isEmpty()) {
+                    salida.setText("El campo -Id Inicial- y/o -Id Final- está/n vacio/s. Llene los campos");
+                } else {
+                    String query = "SELECT * FROM datos WHERE id BETWEEN ' " + idInicial.getText() + " ' AND '" + idFinal.getText() + "' ;";
+
+                    try {
+                        //preparo la consulta
+                        PreparedStatement preparar = con.prepareStatement(query);
+                        //ejecuto la consulta luego de prepararla, como es un select devuelve una lista de tipo ResultSet
+                        ResultSet resultado = preparar.executeQuery();
+                        //hago un ciclo para recorrer la lista y ponerla en la tabla de la interfaz
+                        boolean id = false;
+                        while (resultado.next()) {
+                            modelo.addRow(new Object[]{resultado.getInt("id"), resultado.getString("nombres"), resultado.getString("apellidos"), resultado.getString("telefono"), resultado.getString("direccion"), resultado.getString("email")});
+                            id = true;
+                        }
+                        if (id) {
+                            salida.setText("Listado por id en rango " + idInicial.getText() + " y " + idFinal.getText() + "."); // si lo de arriba se hizo, devuelve la salida correcta
+                        } else {
+                            salida.setText("No se encuentran los rangos de ID. ");
+                        }
+
+                    } catch (SQLException ex) {
+                        salida.setText("Error en el sql");
+                    }
+                }
+            } else {
+                salida.setText("No se ha ingresado un Id para buscar los contactos. ");
+            }
+        } else {
+            salida.setText("No se pudo conectar con el servidor. ");
+        }
+    }//GEN-LAST:event_B_ListarRangoIDActionPerformed
+
+    private void idInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idInicialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idInicialActionPerformed
+
+    private void idFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idFinalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idFinalActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -426,16 +580,23 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
     private javax.swing.JButton B_BorrarContacto;
     private javax.swing.JButton B_Consultar;
     private javax.swing.JButton B_EditarContacto;
+    private javax.swing.JButton B_ListarCiudad;
+    private javax.swing.JButton B_ListarRangoID;
     private javax.swing.JLabel L_Apellidos;
     private javax.swing.JLabel L_Dirección;
     private javax.swing.JLabel L_Dirección1;
+    private javax.swing.JLabel L_IdInicial1;
+    private javax.swing.JLabel L_IdInicial2;
     private javax.swing.JLabel L_Nombres;
+    private javax.swing.JLabel L_RangosID;
     private javax.swing.JLabel L_Telefono;
     private javax.swing.JLabel L_Telefono1;
     private javax.swing.JLabel L_Titulo;
     private javax.swing.JTextField apellidos;
     private javax.swing.JTextField direccion;
     private javax.swing.JTextField email;
+    private javax.swing.JTextField idFinal;
+    private javax.swing.JTextField idInicial;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField nombres;
