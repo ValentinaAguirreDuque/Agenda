@@ -78,6 +78,8 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
         L_IdInicial1 = new javax.swing.JLabel();
         idFinal = new javax.swing.JTextField();
         L_IdInicial2 = new javax.swing.JLabel();
+        B_BuscarPorNombreInicial = new javax.swing.JButton();
+        B_BuscarPorApellidoInicial = new javax.swing.JButton();
 
         L_Telefono1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         L_Telefono1.setText("Teléfono:");
@@ -218,6 +220,20 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
         L_IdInicial2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         L_IdInicial2.setText("ID inicial:");
 
+        B_BuscarPorNombreInicial.setText("Buscar por nombre ");
+        B_BuscarPorNombreInicial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_BuscarPorNombreInicialActionPerformed(evt);
+            }
+        });
+
+        B_BuscarPorApellidoInicial.setText("Buscar por apellido ");
+        B_BuscarPorApellidoInicial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_BuscarPorApellidoInicialActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -234,7 +250,12 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(B_ListarRangoID)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(B_ListarRangoID)
+                                .addGap(18, 18, 18)
+                                .addComponent(B_BuscarPorNombreInicial)
+                                .addGap(18, 18, 18)
+                                .addComponent(B_BuscarPorApellidoInicial))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jScrollPane1)
                                 .addGroup(layout.createSequentialGroup()
@@ -316,11 +337,14 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
                     .addComponent(B_EditarContacto)
                     .addComponent(B_ListarCiudad))
                 .addGap(11, 11, 11)
-                .addComponent(B_ListarRangoID)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(B_ListarRangoID)
+                    .addComponent(B_BuscarPorNombreInicial)
+                    .addComponent(B_BuscarPorApellidoInicial))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
 
@@ -543,6 +567,86 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_idFinalActionPerformed
 
+    private void B_BuscarPorNombreInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_BuscarPorNombreInicialActionPerformed
+        Connection con = conectar();
+        modelo.setRowCount(0);
+
+        if (con != null) {
+            if (!nombres.getText().isEmpty()) {
+                if (nombres.getText().isEmpty()) {
+                    salida.setText("El campo -Nombres- está vacío. Llene los campos");
+                } else {
+                    String query = "SELECT * FROM datos WHERE nombres LIKE '" + nombres.getText() + "%' ;";
+
+                    try {
+                        //preparo la consulta
+                        PreparedStatement preparar = con.prepareStatement(query);
+                        //ejecuto la consulta luego de prepararla, como es un select devuelve una lista de tipo ResultSet
+                        ResultSet resultado = preparar.executeQuery();
+                        //hago un ciclo para recorrer la lista y ponerla en la tabla de la interfaz
+                        boolean nomb = false;
+                        while (resultado.next()) {
+                            modelo.addRow(new Object[]{resultado.getInt("id"), resultado.getString("nombres"), resultado.getString("apellidos"), resultado.getString("telefono"), resultado.getString("direccion"), resultado.getString("email")});
+                            nomb = true;
+                        }
+                        if (nomb) {
+                            salida.setText("Listado de nombres con: " + nombres.getText() + "."); // si lo de arriba se hizo, devuelve la salida correcta
+                        } else {
+                            salida.setText("No se encuentran ese nombre o iniciales. ");
+                        }
+
+                    } catch (SQLException ex) {
+                        salida.setText("Error en el sql");
+                    }
+                }
+            } else {
+                salida.setText("No se ha ingresado un nombre o inicial para buscar en los contactos. ");
+            }
+        } else {
+            salida.setText("No se pudo conectar con el servidor. ");
+        }
+    }//GEN-LAST:event_B_BuscarPorNombreInicialActionPerformed
+
+    private void B_BuscarPorApellidoInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_BuscarPorApellidoInicialActionPerformed
+Connection con = conectar();
+        modelo.setRowCount(0);
+
+        if (con != null) {
+            if (!apellidos.getText().isEmpty()) {
+                if (apellidos.getText().isEmpty()) {
+                    salida.setText("El campo -Apellidos- está vacío. Llene los campos");
+                } else {
+                    String query = "SELECT * FROM datos WHERE apellidos LIKE '" + apellidos.getText() + "%' ;";
+
+                    try {
+                        //preparo la consulta
+                        PreparedStatement preparar = con.prepareStatement(query);
+                        //ejecuto la consulta luego de prepararla, como es un select devuelve una lista de tipo ResultSet
+                        ResultSet resultado = preparar.executeQuery();
+                        //hago un ciclo para recorrer la lista y ponerla en la tabla de la interfaz
+                        boolean ap = false;
+                        while (resultado.next()) {
+                            modelo.addRow(new Object[]{resultado.getInt("id"), resultado.getString("nombres"), resultado.getString("apellidos"), resultado.getString("telefono"), resultado.getString("direccion"), resultado.getString("email")});
+                            ap = true;
+                        }
+                        if (ap) {
+                            salida.setText("Listado de apellidos con: " + apellidos.getText() + "."); // si lo de arriba se hizo, devuelve la salida correcta
+                        } else {
+                            salida.setText("No se encuentran ese apellido o iniciales. ");
+                        }
+
+                    } catch (SQLException ex) {
+                        salida.setText("Error en el sql");
+                    }
+                }
+            } else {
+                salida.setText("No se ha ingresado un apellido o inicial para buscar en los contactos. ");
+            }
+        } else {
+            salida.setText("No se pudo conectar con el servidor. ");
+        }
+    }//GEN-LAST:event_B_BuscarPorApellidoInicialActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -578,6 +682,8 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_Agregar;
     private javax.swing.JButton B_BorrarContacto;
+    private javax.swing.JButton B_BuscarPorApellidoInicial;
+    private javax.swing.JButton B_BuscarPorNombreInicial;
     private javax.swing.JButton B_Consultar;
     private javax.swing.JButton B_EditarContacto;
     private javax.swing.JButton B_ListarCiudad;
