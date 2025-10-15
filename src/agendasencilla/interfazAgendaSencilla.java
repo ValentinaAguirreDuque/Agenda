@@ -80,6 +80,11 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
         L_IdInicial2 = new javax.swing.JLabel();
         B_BuscarPorNombreInicial = new javax.swing.JButton();
         B_BuscarPorApellidoInicial = new javax.swing.JButton();
+        L_Id = new javax.swing.JLabel();
+        id = new javax.swing.JTextField();
+        B_BuscarPorID = new javax.swing.JButton();
+        B_ListarDireccionCalle = new javax.swing.JButton();
+        B_ListarDireccionCarrera = new javax.swing.JButton();
 
         L_Telefono1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         L_Telefono1.setText("Teléfono:");
@@ -234,6 +239,36 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
             }
         });
 
+        L_Id.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        L_Id.setText("ID:");
+
+        id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idActionPerformed(evt);
+            }
+        });
+
+        B_BuscarPorID.setText("Buscar por ID");
+        B_BuscarPorID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_BuscarPorIDActionPerformed(evt);
+            }
+        });
+
+        B_ListarDireccionCalle.setText("Direccion calle");
+        B_ListarDireccionCalle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_ListarDireccionCalleActionPerformed(evt);
+            }
+        });
+
+        B_ListarDireccionCarrera.setText("Direccion carrera");
+        B_ListarDireccionCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_ListarDireccionCarreraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -250,12 +285,7 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(B_ListarRangoID)
-                                .addGap(18, 18, 18)
-                                .addComponent(B_BuscarPorNombreInicial)
-                                .addGap(18, 18, 18)
-                                .addComponent(B_BuscarPorApellidoInicial))
+                            .addComponent(B_ListarDireccionCarrera)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jScrollPane1)
                                 .addGroup(layout.createSequentialGroup()
@@ -282,6 +312,16 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
                                             .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(email)))
                                 .addGroup(layout.createSequentialGroup()
+                                    .addComponent(B_ListarRangoID)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(B_BuscarPorNombreInicial)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(B_BuscarPorApellidoInicial)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(B_BuscarPorID)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(B_ListarDireccionCalle))
+                                .addGroup(layout.createSequentialGroup()
                                     .addComponent(B_Agregar)
                                     .addGap(46, 46, 46)
                                     .addComponent(B_Consultar)
@@ -300,8 +340,12 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
                                     .addGap(18, 18, 18)
                                     .addComponent(L_IdInicial1)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(idFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                                    .addComponent(idFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(L_Id)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(id))))))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,8 +372,10 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
                     .addComponent(L_IdInicial2)
                     .addComponent(idInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(L_IdInicial1)
-                    .addComponent(idFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
+                    .addComponent(idFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(L_Id)
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(B_Agregar)
                     .addComponent(B_Consultar)
@@ -340,8 +386,12 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(B_ListarRangoID)
                     .addComponent(B_BuscarPorNombreInicial)
-                    .addComponent(B_BuscarPorApellidoInicial))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                    .addComponent(B_BuscarPorApellidoInicial)
+                    .addComponent(B_BuscarPorID)
+                    .addComponent(B_ListarDireccionCalle))
+                .addGap(14, 14, 14)
+                .addComponent(B_ListarDireccionCarrera)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -608,7 +658,7 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
     }//GEN-LAST:event_B_BuscarPorNombreInicialActionPerformed
 
     private void B_BuscarPorApellidoInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_BuscarPorApellidoInicialActionPerformed
-Connection con = conectar();
+        Connection con = conectar();
         modelo.setRowCount(0);
 
         if (con != null) {
@@ -647,6 +697,78 @@ Connection con = conectar();
         }
     }//GEN-LAST:event_B_BuscarPorApellidoInicialActionPerformed
 
+    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idActionPerformed
+
+    private void B_BuscarPorIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_BuscarPorIDActionPerformed
+        Connection con = conectar();
+        modelo.setRowCount(0);
+
+        if (con != null) {
+            if (!id.getText().isEmpty()) {
+                if (id.getText().isEmpty()) {
+                    salida.setText("El campo -ID- está vacío. Llene los campos");
+                } else {
+                    String query = "SELECT * FROM datos WHERE id LIKE '" + id.getText() + "' ;";
+
+                    try {
+                        //preparo la consulta
+                        PreparedStatement preparar = con.prepareStatement(query);
+                        //ejecuto la consulta luego de prepararla, como es un select devuelve una lista de tipo ResultSet
+                        ResultSet resultado = preparar.executeQuery();
+                        //hago un ciclo para recorrer la lista y ponerla en la tabla de la interfaz
+                        boolean ide = false;
+                        while (resultado.next()) {
+                            modelo.addRow(new Object[]{resultado.getInt("id"), resultado.getString("nombres"), resultado.getString("apellidos"), resultado.getString("telefono"), resultado.getString("direccion"), resultado.getString("email")});
+                            ide = true;
+                        }
+                        if (ide) {
+                            salida.setText("ID: " + id.getText() + " encontrado."); // si lo de arriba se hizo, devuelve la salida correcta
+                        } else {
+                            salida.setText("No se encuentran ese ID. ");
+                        }
+
+                    } catch (SQLException ex) {
+                        salida.setText("Error en el sql");
+                    }
+                }
+            } else {
+                salida.setText("No se ha ingresado un ID para buscar en los contactos. ");
+            }
+        } else {
+            salida.setText("No se pudo conectar con el servidor. ");
+        }
+    }//GEN-LAST:event_B_BuscarPorIDActionPerformed
+
+    private void B_ListarDireccionCalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ListarDireccionCalleActionPerformed
+        Connection con = conectar();
+        modelo.setRowCount(0);
+
+        if (con != null) {
+
+            String query = "SELECT * FROM datos WHERE direccion LIKE 'Cl%' OR 'Calle%' ;";
+
+            try {
+                //preparo la consulta
+                PreparedStatement preparar = con.prepareStatement(query);
+                //ejecuto la consulta luego de prepararla, como es un select devuelve una lista de tipo ResultSet
+                ResultSet resultado = preparar.executeQuery();
+                //hago un ciclo para recorrer la lista y ponerla en la tabla de la interfaz
+                while (resultado.next()) {
+                    modelo.addRow(new Object[]{resultado.getInt("id"), resultado.getString("nombres"), resultado.getString("apellidos"), resultado.getString("telefono"), resultado.getString("direccion"), resultado.getString("email")});
+                }
+                salida.setText("Listado por id en rango " + idInicial.getText() + " y " + idFinal.getText() + "."); // si lo de arriba se hizo, devuelve la salida correcta
+            } catch (SQLException ex) {
+                salida.setText("Error en el sql");
+            }
+        }
+    }//GEN-LAST:event_B_ListarDireccionCalleActionPerformed
+
+    private void B_ListarDireccionCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ListarDireccionCarreraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B_ListarDireccionCarreraActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -683,14 +805,18 @@ Connection con = conectar();
     private javax.swing.JButton B_Agregar;
     private javax.swing.JButton B_BorrarContacto;
     private javax.swing.JButton B_BuscarPorApellidoInicial;
+    private javax.swing.JButton B_BuscarPorID;
     private javax.swing.JButton B_BuscarPorNombreInicial;
     private javax.swing.JButton B_Consultar;
     private javax.swing.JButton B_EditarContacto;
     private javax.swing.JButton B_ListarCiudad;
+    private javax.swing.JButton B_ListarDireccionCalle;
+    private javax.swing.JButton B_ListarDireccionCarrera;
     private javax.swing.JButton B_ListarRangoID;
     private javax.swing.JLabel L_Apellidos;
     private javax.swing.JLabel L_Dirección;
     private javax.swing.JLabel L_Dirección1;
+    private javax.swing.JLabel L_Id;
     private javax.swing.JLabel L_IdInicial1;
     private javax.swing.JLabel L_IdInicial2;
     private javax.swing.JLabel L_Nombres;
@@ -701,6 +827,7 @@ Connection con = conectar();
     private javax.swing.JTextField apellidos;
     private javax.swing.JTextField direccion;
     private javax.swing.JTextField email;
+    private javax.swing.JTextField id;
     private javax.swing.JTextField idFinal;
     private javax.swing.JTextField idInicial;
     private javax.swing.JScrollPane jScrollPane1;
