@@ -61,7 +61,7 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
         telefono = new javax.swing.JTextField();
         L_Dirección = new javax.swing.JLabel();
         direccion = new javax.swing.JTextField();
-        L_Dirección1 = new javax.swing.JLabel();
+        L_Email = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
         B_Agregar = new javax.swing.JButton();
         B_Consultar = new javax.swing.JButton();
@@ -75,9 +75,9 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
         B_ListarRangoID = new javax.swing.JButton();
         L_RangosID = new javax.swing.JLabel();
         idInicial = new javax.swing.JTextField();
-        L_IdInicial1 = new javax.swing.JLabel();
+        L_IdFinal = new javax.swing.JLabel();
         idFinal = new javax.swing.JTextField();
-        L_IdInicial2 = new javax.swing.JLabel();
+        L_IdInicial = new javax.swing.JLabel();
         B_BuscarPorNombreInicial = new javax.swing.JButton();
         B_BuscarPorApellidoInicial = new javax.swing.JButton();
         L_Id = new javax.swing.JLabel();
@@ -85,6 +85,7 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
         B_BuscarPorID = new javax.swing.JButton();
         B_ListarDireccionCalle = new javax.swing.JButton();
         B_ListarDireccionCarrera = new javax.swing.JButton();
+        B_ListarPrefijo = new javax.swing.JButton();
 
         L_Telefono1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         L_Telefono1.setText("Teléfono:");
@@ -136,8 +137,8 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
             }
         });
 
-        L_Dirección1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        L_Dirección1.setText("E-Mail:");
+        L_Email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        L_Email.setText("E-Mail:");
 
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,8 +214,8 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
             }
         });
 
-        L_IdInicial1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        L_IdInicial1.setText("ID final:");
+        L_IdFinal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        L_IdFinal.setText("ID final:");
 
         idFinal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,8 +223,8 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
             }
         });
 
-        L_IdInicial2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        L_IdInicial2.setText("ID inicial:");
+        L_IdInicial.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        L_IdInicial.setText("ID inicial:");
 
         B_BuscarPorNombreInicial.setText("Buscar por nombre ");
         B_BuscarPorNombreInicial.addActionListener(new java.awt.event.ActionListener() {
@@ -269,6 +270,13 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
             }
         });
 
+        B_ListarPrefijo.setText("Listar prefijo");
+        B_ListarPrefijo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_ListarPrefijoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -285,7 +293,10 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(B_ListarDireccionCarrera)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(B_ListarDireccionCarrera)
+                                .addGap(18, 18, 18)
+                                .addComponent(B_ListarPrefijo))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jScrollPane1)
                                 .addGroup(layout.createSequentialGroup()
@@ -301,7 +312,7 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(18, 18, 18)
-                                            .addComponent(L_Dirección1)))
+                                            .addComponent(L_Email)))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addGroup(layout.createSequentialGroup()
@@ -334,11 +345,11 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(L_RangosID)
                                     .addGap(31, 31, 31)
-                                    .addComponent(L_IdInicial2)
+                                    .addComponent(L_IdInicial)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(idInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(L_IdInicial1)
+                                    .addComponent(L_IdFinal)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(idFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -364,14 +375,14 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(L_Dirección)
                     .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(L_Dirección1)
+                    .addComponent(L_Email)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(L_RangosID)
-                    .addComponent(L_IdInicial2)
+                    .addComponent(L_IdInicial)
                     .addComponent(idInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(L_IdInicial1)
+                    .addComponent(L_IdFinal)
                     .addComponent(idFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(L_Id)
                     .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -390,7 +401,9 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
                     .addComponent(B_BuscarPorID)
                     .addComponent(B_ListarDireccionCalle))
                 .addGap(14, 14, 14)
-                .addComponent(B_ListarDireccionCarrera)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(B_ListarDireccionCarrera)
+                    .addComponent(B_ListarPrefijo))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
@@ -747,7 +760,7 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
 
         if (con != null) {
 
-            String query = "SELECT * FROM datos WHERE direccion LIKE 'Cl%' OR 'Calle%' ;";
+            String query = "SELECT * FROM datos WHERE direccion LIKE 'Cl%' OR direccion LIKE 'Calle%' ;";
 
             try {
                 //preparo la consulta
@@ -758,7 +771,7 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
                 while (resultado.next()) {
                     modelo.addRow(new Object[]{resultado.getInt("id"), resultado.getString("nombres"), resultado.getString("apellidos"), resultado.getString("telefono"), resultado.getString("direccion"), resultado.getString("email")});
                 }
-                salida.setText("Listado por id en rango " + idInicial.getText() + " y " + idFinal.getText() + "."); // si lo de arriba se hizo, devuelve la salida correcta
+                salida.setText("Listado por calle. "); // si lo de arriba se hizo, devuelve la salida correcta
             } catch (SQLException ex) {
                 salida.setText("Error en el sql");
             }
@@ -766,8 +779,68 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
     }//GEN-LAST:event_B_ListarDireccionCalleActionPerformed
 
     private void B_ListarDireccionCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ListarDireccionCarreraActionPerformed
-        // TODO add your handling code here:
+        Connection con = conectar();
+        modelo.setRowCount(0);
+
+        if (con != null) {
+
+            String query = "SELECT * FROM datos WHERE direccion LIKE 'Cra%' OR direccion LIKE 'Carrera%' ;";
+
+            try {
+                //preparo la consulta
+                PreparedStatement preparar = con.prepareStatement(query);
+                //ejecuto la consulta luego de prepararla, como es un select devuelve una lista de tipo ResultSet
+                ResultSet resultado = preparar.executeQuery();
+                //hago un ciclo para recorrer la lista y ponerla en la tabla de la interfaz
+                while (resultado.next()) {
+                    modelo.addRow(new Object[]{resultado.getInt("id"), resultado.getString("nombres"), resultado.getString("apellidos"), resultado.getString("telefono"), resultado.getString("direccion"), resultado.getString("email")});
+                }
+                salida.setText("Listado por carrera. "); // si lo de arriba se hizo, devuelve la salida correcta
+            } catch (SQLException ex) {
+                salida.setText("Error en el sql");
+            }
+        }
     }//GEN-LAST:event_B_ListarDireccionCarreraActionPerformed
+
+    private void B_ListarPrefijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ListarPrefijoActionPerformed
+        Connection con = conectar();
+        modelo.setRowCount(0);
+
+        if (con != null) {
+            if (!telefono.getText().isEmpty()) {
+                if (telefono.getText().isEmpty()) {
+                    salida.setText("El campo -Teléfono- está vacío. Llene los campos");
+                } else {
+                    String query = "SELECT * FROM datos WHERE telefono LIKE '" + telefono.getText() + "%' ;";
+
+                    try {
+                        //preparo la consulta
+                        PreparedStatement preparar = con.prepareStatement(query);
+                        //ejecuto la consulta luego de prepararla, como es un select devuelve una lista de tipo ResultSet
+                        ResultSet resultado = preparar.executeQuery();
+                        //hago un ciclo para recorrer la lista y ponerla en la tabla de la interfaz
+                        boolean tel = false;
+                        while (resultado.next()) {
+                            modelo.addRow(new Object[]{resultado.getInt("id"), resultado.getString("nombres"), resultado.getString("apellidos"), resultado.getString("telefono"), resultado.getString("direccion"), resultado.getString("email")});
+                            tel = true;
+                        }
+                        if (tel) {
+                            salida.setText("Listado con teléfonos con prefijo: " + telefono.getText() + "."); // si lo de arriba se hizo, devuelve la salida correcta
+                        } else {
+                            salida.setText("No se encuentran ese prefijo. ");
+                        }
+
+                    } catch (SQLException ex) {
+                        salida.setText("Error en el sql");
+                    }
+                }
+            } else {
+                salida.setText("No se ha ingresado un prefijo para buscar en los contactos. ");
+            }
+        } else {
+            salida.setText("No se pudo conectar con el servidor. ");
+        }
+    }//GEN-LAST:event_B_ListarPrefijoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -812,13 +885,14 @@ public class interfazAgendaSencilla extends javax.swing.JFrame {
     private javax.swing.JButton B_ListarCiudad;
     private javax.swing.JButton B_ListarDireccionCalle;
     private javax.swing.JButton B_ListarDireccionCarrera;
+    private javax.swing.JButton B_ListarPrefijo;
     private javax.swing.JButton B_ListarRangoID;
     private javax.swing.JLabel L_Apellidos;
     private javax.swing.JLabel L_Dirección;
-    private javax.swing.JLabel L_Dirección1;
+    private javax.swing.JLabel L_Email;
     private javax.swing.JLabel L_Id;
-    private javax.swing.JLabel L_IdInicial1;
-    private javax.swing.JLabel L_IdInicial2;
+    private javax.swing.JLabel L_IdFinal;
+    private javax.swing.JLabel L_IdInicial;
     private javax.swing.JLabel L_Nombres;
     private javax.swing.JLabel L_RangosID;
     private javax.swing.JLabel L_Telefono;

@@ -52,7 +52,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="B_ListarDireccionCarrera" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="B_ListarDireccionCarrera" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="B_ListarPrefijo" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jScrollPane1" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
@@ -69,7 +73,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="direccion" min="-2" pref="140" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="L_Dirección1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="L_Email" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -109,11 +113,11 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="L_RangosID" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                  <Component id="L_IdInicial2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="L_IdInicial" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="idInicial" min="-2" pref="140" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="L_IdInicial1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="L_IdFinal" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="idFinal" min="-2" pref="140" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -147,15 +151,15 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="L_Dirección" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="direccion" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="L_Dirección1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="L_Email" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="email" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="L_RangosID" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="L_IdInicial2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="L_IdInicial" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="idInicial" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="L_IdInicial1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="L_IdFinal" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="idFinal" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="L_Id" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="id" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -177,7 +181,10 @@
                   <Component id="B_ListarDireccionCalle" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-              <Component id="B_ListarDireccionCarrera" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="B_ListarDireccionCarrera" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="B_ListarPrefijo" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="185" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
@@ -248,7 +255,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="direccionActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="L_Direcci&#xf3;n1">
+    <Component class="javax.swing.JLabel" name="L_Email">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
@@ -397,7 +404,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idInicialActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="L_IdInicial1">
+    <Component class="javax.swing.JLabel" name="L_IdFinal">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
@@ -410,7 +417,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idFinalActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="L_IdInicial2">
+    <Component class="javax.swing.JLabel" name="L_IdInicial">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
@@ -469,6 +476,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_ListarDireccionCarreraActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="B_ListarPrefijo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Listar prefijo"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_ListarPrefijoActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
