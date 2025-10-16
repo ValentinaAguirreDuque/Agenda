@@ -51,85 +51,96 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jScrollPane1" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="B_ListarDireccionCarrera" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="B_ListarPrefijo" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="L_Nombres" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="nombres" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="L_Apellidos" min="-2" pref="62" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="L_Dirección" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="direccion" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="L_Email" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="apellidos" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="L_Telefono" min="-2" pref="62" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="telefono" min="-2" pref="140" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="email" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jScrollPane1" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="L_Nombres" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="nombres" min="-2" pref="140" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="L_Apellidos" min="-2" pref="62" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="L_Dirección" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="direccion" min="-2" pref="140" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="L_Email" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="B_Agregar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                              <Component id="B_Consultar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="B_BorrarContacto" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="B_EditarContacto" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                              <Component id="B_ListarCiudad" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="L_RangosID" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="L_IdInicial" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="idInicial" min="-2" pref="140" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="L_IdFinal" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="idFinal" min="-2" pref="140" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="L_Id" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="id" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="B_ListarRangoID" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="B_BuscarPorNombreInicial" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="B_BuscarPorApellidoInicial" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="B_BuscarPorID" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="apellidos" min="-2" pref="140" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="L_Telefono" min="-2" pref="62" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="telefono" min="-2" pref="140" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="email" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="B_ListarDireccionCarrera" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="B_ListarPrefijo" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="B_ListarAlfabeticamente" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="B_ListarIDpar" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="B_ListarIDimpar1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="B_ListarRangoID" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="B_BuscarPorNombreInicial" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="B_BuscarPorApellidoInicial" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="B_BuscarPorID" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="B_ListarDireccionCalle" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="B_Agregar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                                  <Component id="B_Consultar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="B_BorrarContacto" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="B_EditarContacto" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="B_ListarCiudad" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="L_RangosID" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                  <Component id="L_IdInicial" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="idInicial" min="-2" pref="140" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="L_IdFinal" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="idFinal" min="-2" pref="140" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="L_Id" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="id" max="32767" attributes="0"/>
+                                  <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="50" max="32767" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -184,6 +195,10 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="B_ListarDireccionCarrera" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="B_ListarPrefijo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="B_ListarAlfabeticamente" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="B_ListarIDpar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="B_ListarIDimpar1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="185" max="-2" attributes="0"/>
@@ -484,6 +499,45 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_ListarPrefijoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="B_ListarAlfabeticamente">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Listar de A-Z"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_ListarAlfabeticamenteActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="B_ListarIDpar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Listar ID par"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_ListarIDparActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="B_ListarIDimpar1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Listar ID impar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_ListarIDimpar1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
